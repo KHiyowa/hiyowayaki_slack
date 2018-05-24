@@ -49,5 +49,12 @@ def meshi(message):
         return
     with open("dic/meshi.yml", "r+") as data_list:
         data = yaml.load(data_list)
+
     datum = random.choice(data).split()
-    message.reply(expandURL("http://" + datum[2]))
+    for i in range(10):
+        try:
+            meshi_url = expandURL("http://" + datum[i])
+            break
+        except:
+            continue
+    message.reply(meshi_url)
